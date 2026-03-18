@@ -1,0 +1,80 @@
+<div class="modal fade" id="addSectionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter une section</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form, { attr: { id: 'section-form', 'data-turbo': 'false' } }) }}
+    
+                    {# Champ Titre #}
+                    {{ form_row(form.titre, {
+                        'row_attr': { 'class': 'row mb-3' },
+                        'label_attr': { 'class': 'col-sm-4 col-form-label fw-bold' },
+                        'attr': { 'class': 'form-control' }
+                    }) }}
+
+                    {# Section Modèle de disposition #}
+                    <div class="row mb-3">
+                        <label class="col-sm-4 col-form-label fw-bold">Modèle de disposition :</label>
+                        <div class="col-sm-12">
+                            <div id="section-template-container" class="template-selector d-flex overflow-x-auto pb-2">
+                                {% for key, child in form.template %}
+                                    {% set templateObj = form.template.vars.choices[key].data %}
+                                    <div class="template-item">
+                                        <label class="template-label">
+                                            {{ form_widget(child, {'attr': {'class': 'template-radio-input'}}) }}
+                                            <div class="template-card shadow-sm">
+                                                {% if templateObj %}
+                                                    <img src="{{ asset('uploads/template/' ~ templateObj.pic) }}" 
+                                                        class="template-img" 
+                                                        alt="{{ templateObj.name }}">
+                                                {% endif %}
+                                            </div>
+                                            <span class="template-name text-truncate">{{ child.vars.label }}</span>
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Champ Description/Texte #}
+                    {{ form_row(form.text, {
+                        'row_attr': { 'class': 'row mb-3' },
+                        'label_attr': { 'class': 'col-sm-4 col-form-label fw-bold' },
+                        'attr': { 'class': 'form-control' }
+                    }) }}
+
+                    {# Champ Image #}
+                    {{ form_row(form.pic, {
+                        'row_attr': { 'class': 'row mb-3' },
+                        'label_attr': { 'class': 'col-sm-4 col-form-label fw-bold' },
+                        'attr': { 'class': 'form-control' }
+                    }) }}
+
+                    {# Champ Nombre (Ordre) #}
+                    {{ form_row(form.number, {
+                        'row_attr': { 'class': 'row mb-3' },
+                        'label_attr': { 'class': 'col-sm-6 col-form-label fw-bold' },
+                        'attr': { 'class': 'form-control' }
+                    }) }}
+
+                    {{ form_rest(form) }}
+
+                    <div class="row mt-4">
+                        <div class="col-sm-8 offset-sm-4">
+                            <button type="submit" id="add-section-button" class="btn btn-primary px-4">
+                                Ajouter la section
+                            </button>
+                        </div>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>

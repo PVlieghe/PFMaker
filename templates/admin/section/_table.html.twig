@@ -1,0 +1,17 @@
+<table id="index-section-table" class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th>Template</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="sections-table-body">
+        {% for section in sections %}
+            {% include 'admin/section/_row.html.twig' with { section: section } %}
+        {% endfor %}
+    </tbody>
+</table>

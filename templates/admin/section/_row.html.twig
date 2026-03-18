@@ -1,0 +1,19 @@
+<tr data-id="{{ section.id }}">
+    <td>{{ section.number }}</td>
+    <td>{{ section.titre }}</td>
+    <td><img src="{{ asset('uploads/template/' ~ section.template.pic) }}" 
+                                                        class="template-img" 
+                                                        alt="{{ section.template.name }}"></td>
+    <td>{{ section.text }}</td>
+    <td>{{ section.pic }}</td>
+    <td>
+        <button class="btn btn-sm btn-outline-primary cursor-wait">✏️</button>
+        <button 
+            class="btn btn-sm btn-outline-danger delete-section"
+            data-url="{{ path('app_section_delete', {id: section.id}) }}"
+            data-token="{{ csrf_token('delete' ~ section.id) }}"
+        >
+            🗑️
+        </button>
+    </td>
+</tr>

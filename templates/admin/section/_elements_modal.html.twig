@@ -1,0 +1,28 @@
+<div class="modal fade" id="elementsModal-{{ section.id }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Éléments de "{{ section.titre }}"
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                {% if section.elements|length > 0 %}
+                    <ul class="list-group">
+                        {% for element in section.elements %}
+                            <li class="list-group-item">
+                                {{ element.titre ?? 'Élément #' ~ element.id }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">Aucun élément</p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>

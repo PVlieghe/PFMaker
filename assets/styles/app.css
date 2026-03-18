@@ -1,3 +1,87 @@
+
+
+
 body {
     background-color: skyblue;
+}
+
+/* --- Index des Sections --- */
+
+#index-section-table {
+    text-align: center
+}
+
+#index-section-table td, 
+#index-section-table th {
+    vertical-align: middle;
+    /* Optionnel : pour que le texte ne colle pas aux bords */
+    padding: 1rem 0.75rem; 
+}
+
+/* --- Conteneur des Templates --- */
+#section-template-container {
+    gap: 1rem;
+    scroll-behavior: smooth;
+    padding: 10px 5px; /* Espace pour l'ombre et l'animation sans couper */
+}
+
+.template-radio-input {
+    display: none;
+}
+
+.template-item {
+    flex: 0 0 auto;
+    width: 140px; /* Légèrement réduit pour l'équilibre visuel */
+    text-align: center;
+}
+
+.template-label {
+    width: 100%;
+    cursor: pointer;
+}
+
+.template-card {
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 2px;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 5px;
+}
+
+.template-img {
+    height: 80px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+}
+
+.template-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #495057;
+    display: block;
+}
+
+/* --- État Sélectionné (Correction de la bordure haute) --- */
+.template-radio-input:checked + .template-card {
+    border-color: #0d6efd !important;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2) !important;
+}
+
+/* --- Harmonisation des colonnes Bootstrap --- */
+/* On s'assure que les inputs ne dépassent pas si on met col-sm-8 */
+.form-control {
+    width: 100%; 
+}
+
+/* Scrollbar discrète */
+#section-template-container::-webkit-scrollbar {
+    height: 4px;
+}
+#section-template-container::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+    border-radius: 10px;
 }
